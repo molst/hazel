@@ -22,7 +22,7 @@ definition to your `pom.xml`:
 
 With Leiningen:
 ```
-[ "0.1"]
+[hazel "0.1"]
 ```
 
 ## Major dependencies
