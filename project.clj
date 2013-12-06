@@ -1,4 +1,4 @@
-(defproject hazel "0.1-SNAPSHOT"
+(defproject hazel "0.2-SNAPSHOT"
   :description "Datomic support library."
   :license {:name "Eclipse Public License - v 1.0"
             :url "http://www.eclipse.org/legal/epl-v10.html"
