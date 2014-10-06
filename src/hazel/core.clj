@@ -50,11 +50,11 @@
 
 (defn realize-dynmap [dynmap & selected-keys]
   (apply merge
-         (for [selected-key selected-keys]
-           (when-let [selected-key-value (selected-key dynmap)]
-             {selected-key (if (set? selected-key-value)
-                             (seq selected-key-value)
-                             selected-key-value)}))))
+         (for [k selected-keys]
+           (when-let [v (k dynmap)]
+             {k (if (set? v)
+                  (seq v)
+                  v)}))))
 
 (defn entid-maps "Takes a map with any filtering attribute/value pairs and returns a seq of plain {:db/id entid} maps."
   [db id-map] (for [entid (find db id-map)] {:db/id (first entid)}))
@@ -68,10 +68,7 @@
   "Takes an entity id, or a seq in which the first element is an entity id, 'entid' and creates a map with the supplied attributes and their corresponding values."
   [db entid & attrs]
   (if-let [entid (if (coll? entid) (first entid) entid)]
-    (apply (partial realize-dynmap (d/entity db entid)) attrs)
-    #_(apply (partial realize-dynmap (d/entity db entid)) (conj attrs :db/id))
-    #_(assoc (apply (partial realize-dynmap (d/entity db entid)) attrs)
-      :db/id entid)))
+    (apply (partial realize-dynmap (d/entity db entid)) attrs)))
 
 (defn season-entids "Takes a seq of entity ids, or lists of which the first element are entity ids, 'entids' and returns a seq of maps, each with the supplied attributes and their corresponding values."
   [db entids & attrs]

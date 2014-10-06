@@ -4,5 +4,5 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"
             :distribution :repo}
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [com.datomic/datomic-free "0.9.4324"]]
+                 [com.datomic/datomic-free "0.9.4899"]]
   :profiles {:dev {:dependencies [[midje "1.5.0"]]}})
